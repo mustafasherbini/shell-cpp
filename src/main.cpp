@@ -1,31 +1,44 @@
 #include <iostream>
 #include <string>
 enum Commands {
-    ExitCommand=0
+    ExitCommand
 };
 enum status {
     Exit,
-    Erorr
+    Done,
+    NotFound
 };
 class CommandHandler {
 
 public:
-    status Processing(std::string command) {
+    status Processing(const std::string& command) {
 
+        if (command.starts_with("exit"))
+            return Exit;
+
+        return NotFound;
     }
 };
 int main() {
   std::cout << std::unitbuf;
   std::cerr << std::unitbuf;
+
   CommandHandler _commandHandler;
+
     while (true) {
 
         std::cout << "$ ";
         std :: string command;
+
         getline(std :: cin, command);
-        if (command.starts_with("exit"))
+
+       auto response= _commandHandler.Processing(command);
+
+        if (response==Exit)
             break;
-        std :: cout<<command <<": command not found\r\n";
+
+         if (response==NotFound)
+            std::cout << command << ": command not found" << std::endl;
 
     }
 
