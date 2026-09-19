@@ -11,4 +11,4 @@ add_executable(shell ${SOURCE_FILES}
         src/Prompet.cpp
 )
 
-target_link_libraries(shell PRIVATE readline)
+#target_link_libraries(shell PRIVATE readline)

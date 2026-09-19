@@ -18,7 +18,6 @@ public:
 
             if (response==Exit)
                 break;
-
         }
 
     }

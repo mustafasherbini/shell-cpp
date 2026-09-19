@@ -22,7 +22,7 @@ public:
     }
 
     static status EchoProcessing(const std::string& command) {
-     std::cout << command.substr(5);
+     std::cout << command.substr(5)<<std::endl;
         return Done;
     }
 
