@@ -2,15 +2,16 @@
 #include <string>
 
 int main() {
-  std::cout << std::unitbuf;
-  std::cerr << std::unitbuf;
+    std::cout << std::unitbuf;
+    std::cerr << std::unitbuf;
 
-    while (true) {
+    std::cout << "$ ";
+    std :: string command;
 
-        std::cout << "$ ";
-        std :: string command;
-        getline(std :: cin, command);
-        std :: cout<<command <<": command not found\r\n";
+    while (getline(std :: cin, command)) {
+    std:: cout<<command <<": command not found\r\n";
+    std::cout << "$ ";
+
     }
 
 }
