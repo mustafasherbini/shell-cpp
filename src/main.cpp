@@ -1,25 +1,7 @@
 #include <iostream>
 #include <string>
-enum Commands {
-    ExitCommand
-};
-enum status {
-    Exit,
-    Done,
-    NotFound
-};
-class CommandHandler {
+#include "CommandHandler.cpp"
 
-public:
-    static status Processing(const std::string& command) {
-
-        if (command=="exit")
-            return Exit;
-
-        return NotFound;
-    }
-
-};
 int main() {
   std::cout << std::unitbuf;
   std::cerr << std::unitbuf;
@@ -34,11 +16,12 @@ int main() {
 
        auto response= CommandHandler::Processing(command);
 
+        if (response==NotFound)
+            std::cout << command << ": command not found" << std::endl;
+
         if (response==Exit)
             break;
 
-         if (response==NotFound)
-            std::cout << command << ": command not found" << std::endl;
 
     }
 
