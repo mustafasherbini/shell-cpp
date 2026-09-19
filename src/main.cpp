@@ -11,19 +11,19 @@ enum status {
 class CommandHandler {
 
 public:
-    status Processing(const std::string& command) {
+    static status Processing(const std::string& command) {
 
-        if (command.starts_with("exit"))
+        if (command=="exit")
             return Exit;
 
         return NotFound;
     }
+
 };
 int main() {
   std::cout << std::unitbuf;
   std::cerr << std::unitbuf;
 
-  CommandHandler _commandHandler;
 
     while (true) {
 
@@ -32,7 +32,7 @@ int main() {
 
         getline(std :: cin, command);
 
-       auto response= _commandHandler.Processing(command);
+       auto response= CommandHandler::Processing(command);
 
         if (response==Exit)
             break;
