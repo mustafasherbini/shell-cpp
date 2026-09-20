@@ -22,7 +22,7 @@ public:
             if (commandObject!=nullptr) {
                 commandObject->Processing();
                 if (commandObject->HasLoggedMEssage())
-                    std:: cout<<commandObject->GetLoggedMessage();
+                    std:: cout<<commandObject->GetLoggedMessage() << std::endl;
             }
             else std::cout << command << ": command not found" << std::endl;
 

@@ -35,7 +35,7 @@ public:
     }
      void Processing () override {
         _msg=_command;
-        if (_command == "echo" || _command == "type")
+        if (_command == "echo" || _command == "type" || _command=="exit")
             _msg+=" is a shell builtin";
         else
             _msg += ": not found";
