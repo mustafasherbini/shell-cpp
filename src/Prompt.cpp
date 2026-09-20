@@ -16,6 +16,7 @@ public:
 
             if (command == "exit")
                 break;
+
             auto commandObject=
                 CommandFactory::GetCommand(command);
 
