@@ -42,7 +42,7 @@ class TypeCommand : public Command {
                 auto perms = fs::status(filePath).permissions();
 
                 if ((perms & fs::perms::owner_exec)  != fs::perms::none) {
-                    _msg += " is : " + filePath;
+                    _msg += " is" + filePath;
                     return;
                 }
 
