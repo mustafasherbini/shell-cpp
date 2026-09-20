@@ -1,8 +1,8 @@
 #include <iostream>
-#include "Prompet.cpp"
+#include "Prompt.cpp"
 
 int main() {
   std::cout << std::unitbuf;
   std::cerr << std::unitbuf;
-    Prompet::run();
+    Prompt::run();
 }

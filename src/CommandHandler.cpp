@@ -1,30 +1,58 @@
 #include <string>
 #include <iostream>
+#include <memory>
 
-enum status {
-    Exit,
-    Done,
-    NotFound
-};
-class CommandHandler {
-
+class Command {
 public:
-    static status Processing(const std::string& command) {
-
-        if (command=="exit")
-            return Exit;
-
-         if (command.starts_with("echo"))
-             return EchoProcessing(command);
-
-        std::cout << command << ": command not found" << std::endl;
-        return NotFound;
+    virtual ~Command() = default;
+    virtual void Processing()=0;
+    std :: string GetLoggedMessage() {
+        return _msg;
     }
-
-    static status EchoProcessing(const std::string& command) {
-     std::cout << command.substr(5)<<std::endl;
-        return Done;
+    bool HasLoggedMEssage() {
+        return !_msg.empty();
     }
+protected:
+    std::string _command,_msg;
+};
 
+class EchoCommand : public Command {
+public:
+    EchoCommand(const std::string& command) {
+        _command=command.substr(5);
+    }
+     void Processing() override {
+        std::cout << _command<<std::endl;
+    }
 
 };
+
+class TypeCommand : public Command {
+public:
+
+    TypeCommand(const std::string& command) {
+        _command=command.substr(5);
+    }
+     void Processing () override {
+        _msg=_command;
+        if (_command == "echo" || _command == "type")
+            _msg+=" is a shell builtin";
+        else
+            _msg += ": not found";
+    }
+};
+
+class CommandFactory {
+public:
+  static std::unique_ptr<Command> GetCommand(const std::string& command) {
+
+        if (command.starts_with("echo "))
+            return std::make_unique<EchoCommand>(command);
+
+        if (command.starts_with("type "))
+            return std::make_unique<TypeCommand>(command);
+
+        return nullptr;
+    }
+};
+
