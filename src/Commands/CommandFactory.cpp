@@ -3,7 +3,7 @@
 #include "TypeCommand.h"
 #include "CustomCommand.h"
 #include "CdCommand.h"
-#include "PWDCommand.h"
+#include "PwdCommand.h"
 #include <cstdlib>
 
 
