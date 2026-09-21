@@ -17,7 +17,7 @@ std::unique_ptr<CommandBase> CommandFactory::GetCommand(const std::string& comma
 
     std::string fileDir;
     if (CommandBase::IsAnExecutable(getenv("PATH"), commandName, fileDir)) {
-        return std::make_unique<CustomCommand>(commandName,CommandBase::GetCommandArgs(command));
+        return std::make_unique<CustomCommand>(command);
     }
 
     return nullptr;

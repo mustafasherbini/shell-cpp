@@ -4,9 +4,8 @@
 #include <iostream>
 
 class CustomCommand : public CommandBase {
-private:
 
 public:
-    CustomCommand(std::string command);
+    CustomCommand(const std::string &command);
     void Processing() override;
 };

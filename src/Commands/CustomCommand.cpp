@@ -6,7 +6,7 @@
 
 
 
-CustomCommand::CustomCommand(std::string command){
+CustomCommand::CustomCommand(const std::string &command){
 _command=command;
 }
 
