@@ -4,6 +4,8 @@
 #include "CustomCommand.h"
 #include <cstdlib>
 
+#include "PwdCommand.h"
+
 std::unique_ptr<CommandBase> CommandFactory::GetCommand(const std::string& command) {
     std::string commandName = CommandBase::GetCommandName(command);
 
@@ -13,6 +15,9 @@ std::unique_ptr<CommandBase> CommandFactory::GetCommand(const std::string& comma
 
     if (commandName == "type") {
         return std::make_unique<TypeCommand>(command);
+    }
+    if (commandName == "pwd") {
+        return std::make_unique<PwdCommand>();
     }
 
     std::string fileDir;

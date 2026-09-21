@@ -8,6 +8,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
 
-add_executable(shell ${SOURCE_FILES})
+add_executable(shell ${SOURCE_FILES}
+        src/Commands/PwdCommand.cpp
+        src/Commands/PwdCommand.h)
 
 target_include_directories(shell PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
