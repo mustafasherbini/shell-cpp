@@ -7,10 +7,9 @@ CdCommand::CdCommand(const std::string& command) {
 }
 
 void CdCommand::Processing() {
-    _msg+=_command;
 
     if (fs::exists(_command) && fs::is_directory(_command)) {
         fs::current_path(_command);
     }else
-        _msg+=": No such file or directory";
+        _msg=_command+": No such file or directory";
 }
