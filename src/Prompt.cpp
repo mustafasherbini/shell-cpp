@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "CommandHandler.cpp"
+#include "Commands/CommandFactory.h"
 
 class Prompt {
 
@@ -22,7 +22,7 @@ public:
 
             if (commandObject!=nullptr) {
                 commandObject->Processing();
-                if (commandObject->HasLoggedMEssage())
+                if (commandObject->HasLoggedMessage())
                     std:: cout<<commandObject->GetLoggedMessage() << std::endl;
             }
             else std::cout << command << ": command not found" << std::endl;
