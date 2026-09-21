@@ -16,7 +16,7 @@ bool CommandBase::HasLoggedMessage() {
 
 bool CommandBase::IsSupportedCommand(const std::string& commandName) {
     return commandName == "echo" || commandName == "type" ||
-           commandName == "exit" || commandName == "pwd";
+           commandName == "exit" || commandName == "pwd" || commandName=="cd";
 }
 
 bool CommandBase::IsAnExecutable(const std::string& pathString,
@@ -66,4 +66,8 @@ std::vector<std::string> CommandBase::GetCommandArgs(const std::string& command)
     }
 
     return args;
+}
+ std::string CommandBase::GetCurrentWorkingDirectory() {
+
+    return std::filesystem::current_path().string();
 }

@@ -2,9 +2,10 @@
 #include "EchoCommand.h"
 #include "TypeCommand.h"
 #include "CustomCommand.h"
+#include "CdCommand.h"
+#include "PWDCommand.h"
 #include <cstdlib>
 
-#include "PwdCommand.h"
 
 std::unique_ptr<CommandBase> CommandFactory::GetCommand(const std::string& command) {
     std::string commandName = CommandBase::GetCommandName(command);
@@ -19,6 +20,10 @@ std::unique_ptr<CommandBase> CommandFactory::GetCommand(const std::string& comma
     if (commandName == "pwd") {
         return std::make_unique<PwdCommand>();
     }
+    if (commandName == "cd") {
+        return std::make_unique<CdCommand>(command);
+    }
+
 
     std::string fileDir;
     if (CommandBase::IsAnExecutable(getenv("PATH"), commandName, fileDir)) {

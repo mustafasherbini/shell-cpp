@@ -1,9 +1,7 @@
-//
-// Created by z004z1hr on 9/21/2026.
-//
 
 #pragma once
 
+#include <filesystem>
 #include <string>
 #include <vector>
 
@@ -21,7 +19,9 @@ public:
                                std::string& fileDir);
     static std::string GetCommandName(const std::string& command);
     static std::vector<std::string> GetCommandArgs(const std::string& command);
+    static std::string GetCurrentWorkingDirectory();
 
 protected:
     std::string _command, _msg;
+    static std::string _currentWorkingDirectory ;
 };
