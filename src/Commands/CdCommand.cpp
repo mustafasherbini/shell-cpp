@@ -8,7 +8,7 @@ CdCommand::CdCommand(const std::string& command) {
 
 void CdCommand::Processing() {
 
-    if (_command =="'~")
+    if (_command =="~")
         fs::current_path(getenv("HOME"));
     else if (fs::exists(_command) && fs::is_directory(_command))
         fs::current_path(_command);
