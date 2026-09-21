@@ -16,7 +16,7 @@ bool CommandBase::HasLoggedMessage() {
 
 bool CommandBase::IsSupportedCommand(const std::string& commandName) {
     return commandName == "echo" || commandName == "type" ||
-           commandName == "exit";
+           commandName == "exit" || commandName == "pwd";
 }
 
 bool CommandBase::IsAnExecutable(const std::string& pathString,
