@@ -8,8 +8,10 @@ CdCommand::CdCommand(const std::string& command) {
 
 void CdCommand::Processing() {
 
-    if (fs::exists(_command) && fs::is_directory(_command)) {
+    if (_command =="'~'")
+        fs::current_path(getenv("HOME"));
+    else if (fs::exists(_command) && fs::is_directory(_command))
         fs::current_path(_command);
-    }else
+    else
         _msg=_command+": No such file or directory";
 }
