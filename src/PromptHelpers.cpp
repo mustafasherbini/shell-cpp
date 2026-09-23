@@ -3,14 +3,21 @@
 
 std::vector<std::string> PromptHelpers::InputParsing(std::string input) {
     std::vector<std::string> args;
-    bool haveSingleQuote = false;
+    bool haveSingleQuote = false, haveDoubleQuote=false;
     std::string newArg;
 
     for (int i = 0; i < input.size(); ++i) {
-        if (input[i] == '\'')
+        if (i+1< input.size() and input[i]=='"' and input[i+1]=='"' ) {
+            i++;
+            continue;
+        }
+        if (input[i] == '"')
+            haveDoubleQuote=!haveDoubleQuote;
+
+        if (!haveDoubleQuote and input[i] == '\'')
             haveSingleQuote = !haveSingleQuote;
 
-        else if (input[i] == ' ' && !haveSingleQuote) {
+        else if (input[i] == ' ' && !haveSingleQuote && ! haveDoubleQuote) {
             if (!newArg.empty()) {
                 args.push_back(newArg);
                 newArg.clear();
