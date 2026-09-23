@@ -12,5 +12,5 @@ void CdCommand::Processing(const std::vector<std::string> &args) {
     else if (fs::exists(argument) && fs::is_directory(argument))
         fs::current_path(argument);
     else
-        std::cout<<argument+": No such file or directory";
+        std::cout<<argument+": No such file or directory\n";
 }

@@ -6,8 +6,8 @@ void CatCommand::Processing(const std::vector<std::string> &args) {
     for (auto path:args) {
         fs::path filePath(path);
         std::ifstream file(filePath);
-    if (file)
-        std::cout << file.rdbuf();
+        if (file.is_open())
+            std::cout << file.rdbuf();
     }
         std::cout << std::endl;
 }
