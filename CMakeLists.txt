@@ -10,7 +10,7 @@ file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
 
 add_executable(shell ${SOURCE_FILES}
         src/PromptHelpers.h
-        src/Commands/Cat.cpp
-        src/Commands/Cat.h)
+        src/Commands/CatCommand.cpp
+        src/Commands/CatCommand.h)
 
 target_include_directories(shell PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)

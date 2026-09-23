@@ -4,7 +4,7 @@
 #include <filesystem>
 namespace fs = std::filesystem;
 
-class Cat : public CommandBase{
+class CatCommand : public CommandBase{
 public:
     void Processing(const std::vector<std::string> &args) override;
 };

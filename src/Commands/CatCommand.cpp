@@ -1,12 +1,12 @@
-#include "Cat.h"
+#include "CatCommand.h"
 #include <fstream>
 #include <iostream>
 
-void Cat::Processing(const std::vector<std::string> &args) {
+void CatCommand::Processing(const std::vector<std::string> &args) {
     for (auto path:args) {
         fs::path filePath(path);
         std::ifstream file(filePath);
     if (file)
-        std::cout << file.rdbuf()<<"\n";
+        std::cout << file.rdbuf()<<" ";
     }
 }

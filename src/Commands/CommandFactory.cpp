@@ -6,6 +6,8 @@
 #include "PwdCommand.h"
 #include <cstdlib>
 
+#include "CatCommand.h"
+
 
 std::unique_ptr<CommandBase> CommandFactory::GetCommand(const std::vector<std::string> &args) {
     std::string firstArgument = args[0];
@@ -18,6 +20,9 @@ std::unique_ptr<CommandBase> CommandFactory::GetCommand(const std::vector<std::s
         return std::make_unique<PwdCommand>();
     if (firstArgument == "cd")
         return std::make_unique<CdCommand>();
+    if (firstArgument == "cat")
+        return std::make_unique<CatCommand>();
+
 
     std::string fileDir;
     if (CommandBase::IsAnExecutable(getenv("PATH"), firstArgument, fileDir)) {
