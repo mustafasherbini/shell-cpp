@@ -13,8 +13,7 @@ std::vector<std::string> PromptHelpers::InputParsing(std::string input) {
         }
         if (input[i] == '"')
             haveDoubleQuote=!haveDoubleQuote;
-
-        if (!haveDoubleQuote and input[i] == '\'')
+        else if (!haveDoubleQuote and input[i] == '\'')
             haveSingleQuote = !haveSingleQuote;
 
         else if (input[i] == ' ' && !haveSingleQuote && ! haveDoubleQuote) {
