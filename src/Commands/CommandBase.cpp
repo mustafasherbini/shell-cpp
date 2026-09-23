@@ -8,7 +8,7 @@ namespace fs = std::filesystem;
 
 bool CommandBase::IsSupportedCommand(const std::string& commandName) {
     return commandName == "echo" || commandName == "type" ||
-           commandName == "exit" || commandName == "pwd" || commandName=="cd" || commandName=="cat";
+           commandName == "exit" || commandName == "pwd" || commandName=="cd";
 }
 
 bool CommandBase::IsAnExecutable(const std::string& pathString,
