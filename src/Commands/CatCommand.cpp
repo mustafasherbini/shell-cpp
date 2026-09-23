@@ -9,4 +9,5 @@ void CatCommand::Processing(const std::vector<std::string> &args) {
     if (file)
         std::cout << file.rdbuf()<<" ";
     }
+        std::cout << std::endl;
 }

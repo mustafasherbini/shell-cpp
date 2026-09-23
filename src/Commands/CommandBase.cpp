@@ -55,3 +55,4 @@ std::vector<std::string> CommandBase::GetCommandArgs(const std::string& command)
 
     return std::filesystem::current_path().string();
 }
+

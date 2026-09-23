@@ -22,12 +22,6 @@ std::unique_ptr<CommandBase> CommandFactory::GetCommand(const std::vector<std::s
         return std::make_unique<CdCommand>();
     if (firstArgument == "cat")
         return std::make_unique<CatCommand>();
+    return std::make_unique<CustomCommand>();
 
-
-    std::string fileDir;
-    if (CommandBase::IsAnExecutable(getenv("PATH"), firstArgument, fileDir)) {
-        return std::make_unique<CustomCommand>();
-    }
-
-    return nullptr;
 }

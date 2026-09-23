@@ -16,20 +16,14 @@ public:
 
             getline(std :: cin, input);
 
-            auto args=PromptHelpers::InputParsing(input);
-
             if (input == "exit")
                 break;
 
+            auto args=PromptHelpers::InputParsing(input);
+
             auto commandObject=
                 CommandFactory::GetCommand(args);
-
-            if (commandObject!=nullptr)
                 commandObject->Processing(args);
-            else std::cout << input << ": command not found" << std::endl;
-
-
-
         }
 
     }
