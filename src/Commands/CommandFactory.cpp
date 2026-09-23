@@ -20,7 +20,8 @@ std::unique_ptr<CommandBase> CommandFactory::GetCommand(const std::vector<std::s
         return std::make_unique<PwdCommand>();
     if (firstArgument == "cd")
         return std::make_unique<CdCommand>();
-
+    if (firstArgument == "cat")
+        return std::make_unique<CatCommand>();
     return std::make_unique<CustomCommand>();
 
 }
