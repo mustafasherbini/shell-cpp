@@ -4,6 +4,5 @@
 
 class TypeCommand : public CommandBase {
 public:
-    TypeCommand(const std::string& command);
-    void Processing() override;
+    void Processing(const std::vector<std::string> &args) override;
 };

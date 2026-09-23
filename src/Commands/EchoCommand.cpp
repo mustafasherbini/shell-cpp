@@ -1,10 +1,11 @@
 #include "EchoCommand.h"
 #include <iostream>
 
-EchoCommand::EchoCommand(const std::string& command) {
-    _command = command.substr(5);
-}
 
-void EchoCommand::Processing() {
-    std::cout << _command << std::endl;
+void EchoCommand::Processing(const std::vector<std::string> &args) {
+    for (int i=1; i<args.size() ; i++) {
+        std :: cout<<args[i]<<" ";
+    }
+    std ::cout<<"\n";
+
 }

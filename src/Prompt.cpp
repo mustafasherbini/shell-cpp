@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+
+#include "PromptHelpers.h"
 #include "Commands/CommandFactory.h"
 
 class Prompt {
@@ -10,22 +12,21 @@ public:
         while (true) {
 
             std::cout << "$ ";
-            std :: string command;
+            std :: string input;
 
-            getline(std :: cin, command);
+            getline(std :: cin, input);
 
-            if (command == "exit")
+            auto args=PromptHelpers::InputParsing(input);
+
+            if (input == "exit")
                 break;
 
             auto commandObject=
-                CommandFactory::GetCommand(command);
+                CommandFactory::GetCommand(args);
 
-            if (commandObject!=nullptr) {
-                commandObject->Processing();
-                if (commandObject->HasLoggedMessage())
-                    std:: cout<<commandObject->GetLoggedMessage() << std::endl;
-            }
-            else std::cout << command << ": command not found" << std::endl;
+            if (commandObject!=nullptr)
+                commandObject->Processing(args);
+            else std::cout << input << ": command not found" << std::endl;
 
 
 

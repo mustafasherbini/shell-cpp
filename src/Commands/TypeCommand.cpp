@@ -1,21 +1,20 @@
 #include "TypeCommand.h"
 #include <cstdlib>
+#include <iostream>
 
-TypeCommand::TypeCommand(const std::string& command) {
-    _command = command.substr(5);
-}
 
-void TypeCommand::Processing() {
-    _msg = _command;
+void TypeCommand::Processing(const std::vector<std::string> &args) {
+       std::string output = args[1];
 
-    if (IsSupportedCommand(GetCommandName(_command)))
-        _msg += " is a shell builtin";
+    if (IsSupportedCommand(args[1]))
+        output += " is a shell builtin";
     else {
         std::string fileDir;
 
-        if (IsAnExecutable(getenv("PATH"), GetCommandName(_command), fileDir))
-            _msg += " is " + fileDir;
+        if (IsAnExecutable(getenv("PATH"), args[1], fileDir))
+            output += " is " + fileDir;
         else
-            _msg += ": not found";
+            output += ": not found";
     }
+    std::cout<<output<<"\n";
 }

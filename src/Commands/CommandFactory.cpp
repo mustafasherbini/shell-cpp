@@ -7,27 +7,21 @@
 #include <cstdlib>
 
 
-std::unique_ptr<CommandBase> CommandFactory::GetCommand(const std::string& command) {
-    std::string commandName = CommandBase::GetCommandName(command);
+std::unique_ptr<CommandBase> CommandFactory::GetCommand(const std::vector<std::string> &args) {
+    std::string firstArgument = args[0];
 
-    if (commandName == "echo") {
-        return std::make_unique<EchoCommand>(command);
-    }
-
-    if (commandName == "type") {
-        return std::make_unique<TypeCommand>(command);
-    }
-    if (commandName == "pwd") {
+    if (firstArgument == "echo")
+        return std::make_unique<EchoCommand>();
+    if (firstArgument == "type")
+        return std::make_unique<TypeCommand>();
+    if (firstArgument == "pwd")
         return std::make_unique<PwdCommand>();
-    }
-    if (commandName == "cd") {
-        return std::make_unique<CdCommand>(command);
-    }
-
+    if (firstArgument == "cd")
+        return std::make_unique<CdCommand>();
 
     std::string fileDir;
-    if (CommandBase::IsAnExecutable(getenv("PATH"), commandName, fileDir)) {
-        return std::make_unique<CustomCommand>(command);
+    if (CommandBase::IsAnExecutable(getenv("PATH"), firstArgument, fileDir)) {
+        return std::make_unique<CustomCommand>();
     }
 
     return nullptr;

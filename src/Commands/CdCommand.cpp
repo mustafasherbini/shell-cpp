@@ -1,17 +1,16 @@
 #include "CdCommand.h"
 #include <filesystem>
+#include <iostream>
+
 namespace fs = std::filesystem;
 
-CdCommand::CdCommand(const std::string& command) {
-    _command=command.substr(3);
-}
+void CdCommand::Processing(const std::vector<std::string> &args) {
+    auto argument=args[1];
 
-void CdCommand::Processing() {
-
-    if (_command =="~")
+    if (argument =="~")
         fs::current_path(getenv("HOME"));
-    else if (fs::exists(_command) && fs::is_directory(_command))
-        fs::current_path(_command);
+    else if (fs::exists(argument) && fs::is_directory(argument))
+        fs::current_path(argument);
     else
-        _msg=_command+": No such file or directory";
+        std::cout<<argument+": No such file or directory";
 }

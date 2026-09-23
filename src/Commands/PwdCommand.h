@@ -4,6 +4,6 @@
 
 class PwdCommand : public CommandBase{
 public:
-    void Processing() override;
+    void Processing(const std::vector<std::string> &args) override;
 };
 

@@ -3,14 +3,9 @@
 #include <stdio.h>
 
 
-
-CustomCommand::CustomCommand(const std::string &command){
-_command=command;
-}
-
-void CustomCommand::Processing() {
+void CustomCommand::Processing(const std::vector<std::string> &args) {
      // not best approch , will be refactored
-     std::system(_command.c_str());
+     std::system(args[0].c_str());
 
 }
 

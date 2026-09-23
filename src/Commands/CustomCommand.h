@@ -6,6 +6,5 @@
 class CustomCommand : public CommandBase {
 
 public:
-    CustomCommand(const std::string &command);
-    void Processing() override;
+    void Processing(const std::vector<std::string> &args) override;
 };

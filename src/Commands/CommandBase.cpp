@@ -6,14 +6,6 @@
 
 namespace fs = std::filesystem;
 
-std::string CommandBase::GetLoggedMessage() {
-    return _msg;
-}
-
-bool CommandBase::HasLoggedMessage() {
-    return !_msg.empty();
-}
-
 bool CommandBase::IsSupportedCommand(const std::string& commandName) {
     return commandName == "echo" || commandName == "type" ||
            commandName == "exit" || commandName == "pwd" || commandName=="cd";
@@ -43,14 +35,6 @@ bool CommandBase::IsAnExecutable(const std::string& pathString,
     return false;
 }
 
-std::string CommandBase::GetCommandName(const std::string& command) {
-    size_t spacePos = command.find_first_of(' ');
-
-    if (spacePos == std::string::npos)
-        return command;
-
-    return command.substr(0, spacePos);
-}
 
 std::vector<std::string> CommandBase::GetCommandArgs(const std::string& command) {
     std::istringstream iss(command);
