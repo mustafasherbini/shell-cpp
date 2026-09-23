@@ -10,5 +10,5 @@ void CatCommand::Processing(const std::vector<std::string> &args) {
         if (file.is_open())
             std::cout << file.rdbuf();
     }
-        std::cout << std::endl;
+
 }
