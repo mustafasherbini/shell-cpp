@@ -8,9 +8,6 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
 
-add_executable(shell ${SOURCE_FILES}
-        src/PromptHelpers.h
-        src/Commands/CatCommand.cpp
-        src/Commands/CatCommand.h)
+add_executable(shell ${SOURCE_FILES})
 
 target_include_directories(shell PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
