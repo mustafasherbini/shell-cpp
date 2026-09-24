@@ -12,21 +12,19 @@ std::vector<std::string> PromptHelpers::InputParsing(std::string input) {
             continue;
         }
         if (input[i]=='\\' and !haveSingleQuote) {
-
-        if (i+1<input.size())
-            newArg.push_back(input[++i]);
-
+                if (i+1<input.size())
+                    newArg.push_back(input[++i]);
         }
-        else if (input[i] == '"')
+        else if (input[i] == '"' and !haveSingleQuote)
             haveDoubleQuote=!haveDoubleQuote;
         else if (!haveDoubleQuote and input[i] == '\'')
             haveSingleQuote = !haveSingleQuote;
 
         else if (input[i] == ' ' && !haveSingleQuote && ! haveDoubleQuote) {
-            if (!newArg.empty()) {
-                args.push_back(newArg);
-                newArg.clear();
-            }
+                if (!newArg.empty()) {
+                    args.push_back(newArg);
+                    newArg.clear();
+                }
         }
         else
             newArg.push_back(input[i]);
