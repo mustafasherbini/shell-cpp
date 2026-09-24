@@ -11,7 +11,7 @@ std::vector<std::string> PromptHelpers::InputParsing(std::string input) {
             i++;
             continue;
         }
-        if (input[i]=='\\') {
+        if (input[i]=='\\' and !haveSingleQuote) {
 
         if (i+1<input.size())
             newArg.push_back(input[++i]);
