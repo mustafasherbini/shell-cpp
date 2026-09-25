@@ -18,7 +18,8 @@ bool CommandBase::IsAnExecutable(const std::string& pathString,
     std::string dir;
 
     while (std::getline(iss, dir, ':')) {
-        if (dir.empty()) continue;
+        if (dir.empty())
+            continue;
 
         auto filePath = dir + '/' + fileName;
 
