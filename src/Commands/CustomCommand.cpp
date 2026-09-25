@@ -8,6 +8,8 @@ void CustomCommand::Processing(const std::vector<std::string> &args) {
      std ::string fileDir, command;
 
      for (int i = 1; i < args.size(); ++i) {
+         if (i==1)
+             command=" ";
           command+=args[i];
           if (i+1!=args.size() )
                command+=' ';
