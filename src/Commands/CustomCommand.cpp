@@ -6,16 +6,16 @@
 void CustomCommand::Processing(const std::vector<std::string> &args) {
      // not best approch , will be refactored
      std ::string fileDir, command;
+     std::vector<char*> argv;
 
-     for (int i = 1; i < args.size(); ++i) {
-         if (i==1)
-             command=" ";
-          command+=args[i];
-          if (i+1!=args.size() )
-               command+=' ';
-     }
+    for (auto& arg : args) {
+    argv.push_back(const_cast<char*>(arg.c_str()));
+    }
+
+    argv.push_back(nullptr);
+
      if (CommandBase::IsAnExecutable(getenv("PATH"), args[0], fileDir))
-        system(("'" + fileDir + "'"+command).c_str());
+        execv(fileDir.c_str(), argv.data());
       else std::cout << command << ": command not found" << std::endl;
 
 
