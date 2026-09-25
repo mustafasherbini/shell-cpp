@@ -11,8 +11,9 @@ void CustomCommand::Processing(const std::vector<std::string> &args) {
 
     for (auto& arg : args) {
     argv.push_back(const_cast<char*>(arg.c_str()));
+        command+=arg+ " ";
     }
-
+    command.pop_back();
     argv.push_back(nullptr);
 
      if (CommandBase::IsAnExecutable(getenv("PATH"), args[0], fileDir)) {
@@ -29,7 +30,5 @@ void CustomCommand::Processing(const std::vector<std::string> &args) {
          }
      }
       else std::cout << command << ": command not found" << std::endl;
-
-
 }
 
