@@ -13,7 +13,7 @@ void CustomCommand::Processing(const std::vector<std::string> &args) {
                command+=' ';
      }
      if (CommandBase::IsAnExecutable(getenv("PATH"), command, fileDir)) {
-     std::system(command.c_str());
+     std::system(fileDir.c_str());
      } else std::cout << command << ": command not found" << std::endl;
 
 
