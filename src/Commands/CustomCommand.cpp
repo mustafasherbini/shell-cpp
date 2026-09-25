@@ -9,7 +9,7 @@ void CustomCommand::Processing(const std::vector<std::string> &args) {
 
      for (int i = 0; i < args.size(); ++i) {
           command+=args[i];
-          if (i+1!=args.size())
+          if (i+1!=args.size() and args[i+1].front()!='/')
                command+='/';
      }
      if (CommandBase::IsAnExecutable(getenv("PATH"), command, fileDir)) {
